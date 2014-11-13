@@ -1,10 +1,10 @@
 {
   "name": "nodemailer-express-handlebars",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A plugin for nodemailer that uses express-handlebars view engine to generate emails",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha --recursive test/tests"
   },
   "keywords": [
     "nodemailer",
@@ -13,10 +13,14 @@
     "handlebars"
   ],
   "author": "Vadim Kazakov <yads12@gmail.com>",
+  "homepage": "https://github.com/yads/nodemailer-express-handlebars",
+  "bugs": "https://github.com/yads/nodemailer-express-handlebars/issues",
   "license": "MIT",
+  "dependencies": {
+    "express-handlebars": "^1.1.0"
+  },
   "devDependencies": {
     "chai": "^1.10.0",
-    "express-handlebars": "^1.1.0",
     "mocha": "^2.0.1",
     "nodemailer": "^1.3.0",
     "nodemailer-stub-transport": "^0.1.4"
