@@ -32,7 +32,7 @@ The plugin expects the following options:
 ## Mail options
 Set the template and values properties on the mail object before calling `sendMail`
 * __template__ the name of the template file to use
-* __values__ this will be passed to the view engine as the context as well as view engine options see [here](https://github.com/ericf/express-handlebars#renderviewviewpath-optionscallback-callback)
+* __context__ this will be passed to the view engine as the context as well as view engine options see [here](https://github.com/ericf/express-handlebars#renderviewviewpath-optionscallback-callback)
 
 # License
 MIT

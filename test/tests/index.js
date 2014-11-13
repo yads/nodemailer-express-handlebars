@@ -27,7 +27,7 @@ describe('when view engine passed', function() {
             to: 'to@domain.com',
             subject: 'Test',
             template: 'email',
-            values: {
+            context: {
                 name: 'Name'
             }
         };
@@ -79,7 +79,7 @@ describe('when options passed', function() {
             to: 'to@domain.com',
             subject: 'Test',
             template: 'email',
-            values: {
+            context: {
                 name: 'Name'
             }
         };
