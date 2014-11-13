@@ -13,5 +13,12 @@
     "handlebars"
   ],
   "author": "Vadim Kazakov <yads12@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "express-handlebars": "^1.1.0",
+    "mocha": "^2.0.1",
+    "nodemailer": "^1.3.0",
+    "nodemailer-stub-transport": "^0.1.4"
+  }
 }
