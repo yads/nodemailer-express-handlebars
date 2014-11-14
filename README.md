@@ -18,10 +18,11 @@ var mail = {
    to: 'to@domain.com',
    subject: 'Test',
    template: 'email',
-   values: {
+   context: {
        name: 'Name'
    }
 }
+transporter.sendMail(mail);
 ```
 ## Plugin Options
 The plugin expects the following options:
