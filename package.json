@@ -15,6 +15,10 @@
   "author": "Vadim Kazakov <yads12@gmail.com>",
   "homepage": "https://github.com/yads/nodemailer-express-handlebars",
   "bugs": "https://github.com/yads/nodemailer-express-handlebars/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yads/nodemailer-express-handlebars"
+  },
   "license": "MIT",
   "dependencies": {
     "express-handlebars": "^1.1.0"
