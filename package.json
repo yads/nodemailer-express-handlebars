@@ -1,6 +1,6 @@
 {
   "name": "nodemailer-express-handlebars",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A plugin for nodemailer that uses express-handlebars view engine to generate emails",
   "main": "index.js",
   "scripts": {
