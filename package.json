@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "express-handlebars": "^2.0.0"
+    "express-handlebars": "^3.0.0"
   },
   "devDependencies": {
     "chai": "^1.10.0",
