@@ -16,7 +16,10 @@ describe('when view engine passed', function() {
 
     beforeEach(function() {
         transporter = nodemailer.createTransport(transport());
-        viewEngine = handlebars.create({});
+        viewEngine = handlebars.create({
+          partialsDir: 'partials/',
+          defaultLayout: false
+        });
         sut = nodemailerExpressHandlebars({
             viewEngine: viewEngine,
             viewPath: path.resolve(__dirname, '../views')
@@ -70,7 +73,10 @@ describe('when options passed', function() {
     beforeEach(function() {
         transporter = nodemailer.createTransport(transport());
         sut = nodemailerExpressHandlebars({
-            viewEngine: {},
+            viewEngine: {
+              partialsDir: 'partials/',
+              defaultLayout: false
+            },
             viewPath: path.resolve(__dirname, '../views')
         });
         transporter.use('compile', sut);
