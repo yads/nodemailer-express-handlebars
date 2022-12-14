@@ -7,23 +7,58 @@ engine to generate html emails.
 npm install nodemailer-express-handlebars
 ```
 # Usage
-```javascript
-//reference the plugin
-var hbs = require('nodemailer-express-handlebars');
-//attach the plugin to the nodemailer transporter
-transporter.use('compile', hbs(options));
-//send mail with options
-var mail = {
-   from: 'from@domain.com',
-   to: 'to@domain.com',
-   subject: 'Test',
-   template: 'email',
-   context: {
-       name: 'Name'
-   }
-}
-transporter.sendMail(mail);
-```
+
+    
+   const nodemailer = require("nodemailer");
+   
+   
+   const hbs = require("nodemailer-express-handlebars");
+   
+  
+   const path = require("path");
+   
+
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "your_email",
+        pass: "your_password",
+      },
+    });
+
+    const handlebarOptions = {
+      viewEngine: {
+        extName: ".handlebars",
+        partialsDir: path.resolve(__dirname, "templateViews"),
+        defaultLayout: false,
+      },
+      viewPath: path.resolve(__dirname, "templateViews"),
+      extName: ".handlebars",
+    };
+
+    transporter.use(
+      "compile",
+      hbs(handlebarOptions),
+    );
+
+    var mailOptions = {
+      from: "your_email",
+      to: "to_email",
+      subject: "your_subject",
+      template: "main",
+      context: {
+        var: var_value
+      },
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+    
 ## Plugin Options
 The plugin expects the following options:
 * __viewEngine (required)__ either the express-handlebars view engine instance or [options for the view engine](https://github.com/express-handlebars/express-handlebars#configuration-and-defaults)
