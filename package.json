@@ -20,14 +20,15 @@
     "url": "https://github.com/yads/nodemailer-express-handlebars"
   },
   "license": "MIT",
-  "dependencies": {
-    "express-handlebars": "^6.0.0"
+  "peerDependencies": {
+    "express-handlebars": ">= 6.0.0",
+    "nodemailer": ">= 6.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "express-handlebars": "^6.0.0",
     "mocha": "^10.0.0",
-    "nodemailer": "^6.4.6",
-    "nodemailer-stub-transport": "^1.1.0"
+    "nodemailer": "^6.4.6"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
