@@ -9,11 +9,11 @@ npm install nodemailer-express-handlebars
 # Usage
 ```javascript
 //reference the plugin
-var hbs = require('nodemailer-express-handlebars');
+const hbs = require('nodemailer-express-handlebars');
 //attach the plugin to the nodemailer transporter
 transporter.use('compile', hbs(options));
 //send mail with options
-var mail = {
+const mail = {
    from: 'from@domain.com',
    to: 'to@domain.com',
    subject: 'Test',
@@ -23,6 +23,20 @@ var mail = {
    }
 }
 transporter.sendMail(mail);
+```
+
+You can send a multipart html and text email by setting the `text_template` option on a mail message.
+```javascript
+const mail = {
+   from: 'from@domain.com',
+   to: 'to@domain.com',
+   subject: 'Test',
+   template: 'email',
+   text_template: 'text',
+   context: {
+       name: 'Name'
+   }
+}
 ```
 ## Plugin Options
 The plugin expects the following options:
