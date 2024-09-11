@@ -1,10 +1,8 @@
-'use strict';
-
-const { expect } = require('chai');
-const nodemailerExpressHandlebars = require('../..'),
-  nodemailer = require('nodemailer'),
-  handlebars = require('express-handlebars'),
-  path = require('path');
+import { expect } from 'chai';
+import nodemailerExpressHandlebars from '../../index.js';
+import nodemailer from 'nodemailer';
+import handlebars from 'express-handlebars';
+import { resolve } from 'path';
 
 describe('when view engine passed', function () {
   let sut, mail, transporter, viewEngine;
@@ -15,12 +13,12 @@ describe('when view engine passed', function () {
       buffer: true,
     });
     viewEngine = handlebars.create({
-      partialsDir: path.resolve(__dirname, '../views/partials/'),
+      partialsDir: resolve(import.meta.dirname, '../views/partials/'),
       defaultLayout: false,
     });
     sut = nodemailerExpressHandlebars({
       viewEngine: viewEngine,
-      viewPath: path.resolve(__dirname, '../views'),
+      viewPath: resolve(import.meta.dirname, '../views'),
     });
     transporter.use('compile', sut);
     mail = {
@@ -104,10 +102,10 @@ describe('when options passed', function () {
     });
     sut = nodemailerExpressHandlebars({
       viewEngine: {
-        partialsDir: path.resolve(__dirname, '../views/partials/'),
+        partialsDir: resolve(import.meta.dirname, '../views/partials/'),
         defaultLayout: false,
       },
-      viewPath: path.resolve(__dirname, '../views'),
+      viewPath: resolve(import.meta.dirname, '../views'),
     });
     transporter.use('compile', sut);
     mail = {
