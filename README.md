@@ -9,7 +9,7 @@ npm install nodemailer-express-handlebars
 # Usage
 ```javascript
 //reference the plugin
-const hbs = require('nodemailer-express-handlebars');
+import hbs from 'nodemailer-express-handlebars';
 //attach the plugin to the nodemailer transporter
 transporter.use('compile', hbs(options));
 //send mail with options

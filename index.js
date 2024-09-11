@@ -1,3 +1,3 @@
-'use strict';
+import nodemailerExpressHandlebars from './lib/index.js';
+export default nodemailerExpressHandlebars;
 
-module.exports = require('./lib');
