@@ -32,63 +32,56 @@ describe('when view engine passed', function () {
     };
   });
 
-  it('should handle errors', function (done) {
+  it('should handle errors', async function () {
     viewEngine.renderView = () => {
       throw 'Rendering Error';
     };
 
-    transporter.sendMail(mail, (err, info) => {
+    let info;
+    try {
+      info = await transporter.sendMail(mail);
+    } catch (err) {
       expect(err).to.eq('Rendering Error');
-      done();
-    });
+    }
+    expect(info).to.be.undefined;
   });
 
-  it('should set html on email', function (done) {
-    transporter.sendMail(mail, (err, info) => {
-      if (err) return done(err);
+  it('should set html on email', async function () {
+    const info = await transporter.sendMail(mail);
 
-      const body = info.message.toString();
-      expect(body).to.contain('<h1>This is a test</h1>');
-      expect(body).to.contain('Name');
-      done();
-    });
+    const body = info.message.toString();
+    expect(body).to.contain('<h1>This is a test</h1>');
+    expect(body).to.contain('Name');
   });
 
-  it('should not overwrite existing html entry', function (done) {
+  it('should not overwrite existing html entry', async function () {
     const html = (mail.html = '<h1>hardcoded</h1>');
-    transporter.sendMail(mail, (err, info) => {
-      if (err) return done(err);
 
-      const body = info.message.toString();
-      expect(body).to.contain(html);
-      done();
-    });
+    const info = await transporter.sendMail(mail);
+
+    const body = info.message.toString();
+    expect(body).to.contain(html);
   });
 
-  it('should handle text_template', function (done) {
+  it('should handle text_template', async function () {
     mail.text_template = 'text';
-    transporter.sendMail(mail, (err, info) => {
-      if (err) return done(err);
 
-      const body = info.message.toString();
-      expect(body).to.contain('<h1>This is a test</h1>');
-      expect(body).to.contain('Name');
-      expect(body).to.contain('Text email');
+    const info = await transporter.sendMail(mail);
 
-      done();
-    });
+    const body = info.message.toString();
+    expect(body).to.contain('<h1>This is a test</h1>');
+    expect(body).to.contain('Name');
+    expect(body).to.contain('Text email');
   });
 
-  it('should handle view and partials', function (done) {
+  it('should handle view and partials', async function () {
     mail.template = 'with_partial';
-    transporter.sendMail(mail, (err, info) => {
-      if (err) return done(err);
 
-      const body = info.message.toString();
-      expect(body).to.contain('<h1>Header</h1>');
-      expect(body).to.contain('Email content');
-      done();
-    });
+    const info = await transporter.sendMail(mail);
+
+    const body = info.message.toString();
+    expect(body).to.contain('<h1>Header</h1>');
+    expect(body).to.contain('Email content');
   });
 });
 
@@ -119,14 +112,11 @@ describe('when options passed', function () {
     };
   });
 
-  it('should set html on email', function (done) {
-    transporter.sendMail(mail, (err, info) => {
-      if (err) return done(err);
+  it('should set html on email', async function () {
+    const info = await transporter.sendMail(mail);
 
-      const body = info.message.toString();
-      expect(body).to.contain('<h1>This is a test</h1>');
-      expect(body).to.contain('Name');
-      done();
-    });
+    const body = info.message.toString();
+    expect(body).to.contain('<h1>This is a test</h1>');
+    expect(body).to.contain('Name');
   });
 });
